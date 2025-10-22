@@ -1,7 +1,6 @@
-import React from "react"
+import { Agreements } from "@/components/agreements";
+import React from "react";
 
 export default function IndexPage() {
-  return (
-    <span>Hello world!</span>
-  )
+  return <Agreements />;
 }
