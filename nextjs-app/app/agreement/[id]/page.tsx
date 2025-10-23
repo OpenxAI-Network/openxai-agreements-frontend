@@ -8,5 +8,9 @@ export default async function AgreementInfoPage({
 }) {
   const { id } = await params;
 
-  return <AgreementInfo id={id} />;
+  return (
+    <div className="p-4">
+      <AgreementInfo id={id} />
+    </div>
+  );
 }

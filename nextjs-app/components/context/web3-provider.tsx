@@ -25,6 +25,7 @@ const modal = createAppKit({
   networks: [mainnet],
   defaultNetwork: mainnet,
   metadata: metadata,
+  themeMode: "light",
 });
 
 export function Web3Provider({

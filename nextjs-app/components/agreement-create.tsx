@@ -21,7 +21,7 @@ export function AgreementCreate() {
   return (
     <div className="flex flex-col gap-3 place-items-center">
       <span className="text-4xl">Create Agreement</span>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full">
         <Label htmlFor="agreement-forAccount">For Account</Label>
         <Input
           id="agreement-forAccount"
@@ -29,7 +29,7 @@ export function AgreementCreate() {
           onChange={(e) => setForAccount(e.target.value)}
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full">
         <Label htmlFor="agreement-title">Title</Label>
         <Input
           id="agreement-title"
@@ -37,10 +37,12 @@ export function AgreementCreate() {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full">
         <Label htmlFor="agreement-description">Description</Label>
         <MDEditor
           id="agreement-description"
+          data-color-mode="light"
+          height="300px"
           value={description}
           onChange={(e) => setDescription(e ?? "")}
         />
