@@ -1,6 +1,6 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "OpenxAI Agreements",
-  description: "View and sign agreements with OpenxAI.",
+  name: "OpenxAI Signables",
+  description: "View OpenxAI signables.",
 } as const;

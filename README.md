@@ -1,6 +1,6 @@
-## OpenxAI Agreements
+## OpenxAI Signables
 
-View and sign agreements with OpenxAI.
+View OpenxAI signables.
 
 ## Commands (in root folder)
 

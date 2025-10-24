@@ -1,5 +1,5 @@
 {
-  description = "Nextjs app running on Xnode!";
+  description = "View OpenxAI signables.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

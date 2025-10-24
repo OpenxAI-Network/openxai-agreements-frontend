@@ -1,5 +1,6 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ export function Header() {
             width={40}
             height={40}
           />
-          <span className="text-xl">OpenxAI Agreements</span>
+          <span className="text-xl">{siteConfig.name}</span>
         </div>
       </Link>
       <appkit-button />

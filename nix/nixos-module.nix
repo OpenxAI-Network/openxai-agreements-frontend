@@ -5,12 +5,12 @@
   ...
 }:
 let
-  cfg = config.services.xnode-nextjs-template;
-  xnode-nextjs-template = pkgs.callPackage ./package.nix { };
+  cfg = config.services.openxai-signables;
+  openxai-signables = pkgs.callPackage ./package.nix { };
 in
 {
   options = {
-    services.xnode-nextjs-template = {
+    services.openxai-signables = {
       enable = lib.mkEnableOption "Enable the nextjs app";
 
       hostname = lib.mkOption {
@@ -42,24 +42,24 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.groups.xnode-nextjs-template = { };
-    users.users.xnode-nextjs-template = {
+    users.groups.openxai-signables = { };
+    users.users.openxai-signables = {
       isSystemUser = true;
-      group = "xnode-nextjs-template";
+      group = "openxai-signables";
     };
 
-    systemd.services.xnode-nextjs-template = {
+    systemd.services.openxai-signables = {
       wantedBy = [ "multi-user.target" ];
-      description = "Nextjs App.";
+      description = "View OpenxAI signables.";
       after = [ "network.target" ];
       environment = {
         HOSTNAME = cfg.hostname;
         PORT = toString cfg.port;
       };
       serviceConfig = {
-        ExecStart = "${lib.getExe xnode-nextjs-template}";
-        User = "xnode-nextjs-template";
-        Group = "xnode-nextjs-template";
+        ExecStart = "${lib.getExe openxai-signables}";
+        User = "openxai-signables";
+        Group = "openxai-signables";
         CacheDirectory = "nextjs-app";
       };
     };

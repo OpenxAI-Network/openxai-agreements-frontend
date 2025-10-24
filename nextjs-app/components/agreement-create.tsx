@@ -79,7 +79,7 @@ export function AgreementCreate() {
             )
             .then((res) => res.json())
             .then((data) => data as number)
-            .then((id) => push(`/agreement/${id}`))
+            .then((id) => push(`/signable/${id}`))
             .catch(console.error);
         }}
       >

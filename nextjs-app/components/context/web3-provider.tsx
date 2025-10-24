@@ -12,10 +12,10 @@ const queryClient = new QueryClient();
 
 // Set up metadata
 const metadata = {
-  name: "openxai-agreements",
-  description: "View and sign agreements with OpenxAI.",
-  url: "https://agreements.openxai.org", // origin must match your domain & subdomain
-  icons: ["https://agreements.openxai.org/icon.png"],
+  name: "openxai-signables",
+  description: "View OpenxAI signables.",
+  url: "https://sign.openxai.org", // origin must match your domain & subdomain
+  icons: ["https://sign.openxai.org/icon.png"],
 };
 
 // Create the modal
