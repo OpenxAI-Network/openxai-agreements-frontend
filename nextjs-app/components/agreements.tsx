@@ -35,7 +35,7 @@ export function Agreements() {
   return (
     <div className="flex flex-col gap-3 place-items-center">
       {address?.toLowerCase() ===
-        "0x3e166454c7781d3fD4ceaB18055cad87136970Ea".toLowerCase() && (
+        "0x309219a8938FC5CDf94c50f3b4199Ddb3d09d066".toLowerCase() && (
         <Link href="/signable/create">
           <Button className="flex place-items-center gap-2">
             <Plus />
