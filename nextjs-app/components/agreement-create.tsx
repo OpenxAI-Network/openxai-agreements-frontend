@@ -5,7 +5,7 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useSignMessage } from "wagmi";
-import { isAddress } from "viem";
+import { checksumAddress, isAddress } from "viem";
 import { indexerUrl } from "@/lib/indexer";
 import { useRouter } from "next/navigation";
 import MDEditor from "@uiw/react-md-editor";
@@ -51,12 +51,15 @@ export function AgreementCreate() {
         onClick={() => {
           if (!isAddress(forAccount)) {
             console.error("Invalid For Address.");
+            return;
           }
           if (!title) {
             console.error("Invalid Title.");
+            return;
           }
           if (!description) {
             console.error("Invalid Description.");
+            return;
           }
 
           signMessageAsync({
@@ -70,7 +73,7 @@ export function AgreementCreate() {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  for_account: forAccount,
+                  for_account: checksumAddress(forAccount),
                   title,
                   description,
                   signature,
