@@ -16,7 +16,7 @@ export function Header() {
             width={40}
             height={40}
           />
-          <span className="text-xl">{siteConfig.name}</span>
+          <span className="text-2xl">{siteConfig.name}</span>
         </div>
       </Link>
       <appkit-button />

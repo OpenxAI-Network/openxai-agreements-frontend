@@ -56,7 +56,7 @@ function AgreementSummery({ agreement }: { agreement: Agreement }) {
       <Card>
         <CardHeader className="gap-4">
           <div className="flex gap-4 place-items-center">
-            <CardTitle className="text-4xl">
+            <CardTitle className="text-2xl">
               #{agreement.id}: {agreement.title}
             </CardTitle>
             {agreement.signature && agreement.signed_at ? (
