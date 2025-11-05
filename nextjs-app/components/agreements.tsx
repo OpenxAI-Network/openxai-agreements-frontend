@@ -53,16 +53,16 @@ export function Agreements() {
 function AgreementSummery({ agreement }: { agreement: Agreement }) {
   return (
     <Link className="w-full" href={`/signable/${agreement.id}`}>
-      <Card>
-        <CardHeader className="gap-4">
-          <div className="flex gap-4 place-items-center">
-            <CardTitle className="text-2xl">
+      <Card className="gap-2 py-3">
+        <CardHeader className="gap-2 px-4">
+          <div className="flex gap-3 place-items-center">
+            <CardTitle className="text-lg">
               #{agreement.id}: {agreement.title}
             </CardTitle>
             {agreement.signature && agreement.signed_at ? (
-              <CheckCircle2 className="text-green-600" />
+              <CheckCircle2 className="size-5 text-green-600" />
             ) : (
-              <X className="text-red-600" />
+              <X className="size-5 text-red-600" />
             )}
             {agreement.signature && agreement.signed_at && (
               <Dialog>
@@ -72,7 +72,7 @@ function AgreementSummery({ agreement }: { agreement: Agreement }) {
                   }}
                 >
                   <DialogTrigger>
-                    <span className="underline text-blue-500">
+                    <span className="underline text-blue-500 text-sm">
                       Verify Signature
                     </span>
                   </DialogTrigger>
