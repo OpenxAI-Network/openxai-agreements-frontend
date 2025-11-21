@@ -5,7 +5,7 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useSignMessage } from "wagmi";
-import { checksumAddress, isAddress } from "viem";
+import { checksumAddress, isAddress, keccak256, toBytes } from "viem";
 import { indexerUrl } from "@/lib/indexer";
 import { useRouter } from "next/navigation";
 import MDEditor from "@uiw/react-md-editor";
@@ -62,8 +62,15 @@ export function AgreementCreate() {
             return;
           }
 
+          let hash = keccak256(
+            toBytes(
+              `${description} with title ${title} for ${checksumAddress(
+                forAccount
+              )}`
+            )
+          );
           signMessageAsync({
-            message: `Create agreement ${description} with title ${title} for ${forAccount}`,
+            message: `Create agreement ${hash}`,
           })
             .then((signature) =>
               fetch(`${indexerUrl}/api/agreement/create`, {

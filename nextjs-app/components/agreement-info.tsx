@@ -18,7 +18,7 @@ import Link from "next/link";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Address } from "viem";
+import { Address, keccak256, toBytes } from "viem";
 import { CheckCircle2, X } from "lucide-react";
 
 export function AgreementInfo({ id }: { id: string }) {
@@ -66,6 +66,14 @@ export function AgreementInfo({ id }: { id: string }) {
                   >
                     Etherscan
                   </Link>
+                  . The hash can be verified using tools such as{" "}
+                  <Link
+                    className="underline text-blue-500"
+                    href="https://emn178.github.io/online-tools/keccak_256.html"
+                    target="_blank"
+                  >
+                    Online Keccak-256
+                  </Link>
                   .
                 </DialogDescription>
               </DialogHeader>
@@ -82,7 +90,19 @@ export function AgreementInfo({ id }: { id: string }) {
                   <Label htmlFor="verify-agreement-message">Message</Label>
                   <Textarea
                     id="verify-agreement-message"
-                    value={`I agree to ${info.description} titled ${info.title} at ${info.signed_at}`}
+                    value={`I agree to ${keccak256(
+                      toBytes(`${info.description} titled ${info.title}`)
+                    )} at ${info.signed_at}`}
+                    readOnly
+                  />
+                </div>
+                <div className="flex flex-col gap-1 w-full">
+                  <Label htmlFor="verify-agreement-unhashed">
+                    Unhashed Message
+                  </Label>
+                  <Textarea
+                    id="verify-agreement-unhashed"
+                    value={`${info.description} titled ${info.title}`}
                     readOnly
                   />
                 </div>
@@ -114,9 +134,12 @@ export function AgreementInfo({ id }: { id: string }) {
               onClick={() => {
                 const signedAt = Math.round(Date.now() / 1000);
 
+                let hash = keccak256(
+                  toBytes(`${info.description} titled ${info.title}`)
+                );
                 signMessageAsync({
                   account: info.for_account as Address,
-                  message: `I agree to ${info.description} titled ${info.title} at ${signedAt}`,
+                  message: `I agree to ${hash} at ${signedAt}`,
                 })
                   .then((signature) =>
                     fetch(`${indexerUrl}/api/agreement/sign`, {
